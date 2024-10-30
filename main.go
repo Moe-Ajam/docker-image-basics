@@ -4,14 +4,16 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 )
 
 func main() {
-	port := ":8080"
+	// port := ":8080"
+	port := os.Getenv("PORT")
 	mux := http.NewServeMux()
 
 	server := http.Server{
-		Addr:    port,
+		Addr:    ":" + port,
 		Handler: mux,
 	}
 	fmt.Printf("Listening on port: %s\n", port)
